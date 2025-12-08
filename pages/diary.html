@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учебный дневник</title>
+    <link rel="stylesheet" href="../style/styles.css">
+</head>
+<body>
+    <div class="page">
+        <!-- Шапка -->
+        <header class="header">
+            <h1 class="header__title">Анастасия</h1>
+        </header>
+
+        <!-- Навигация -->
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="../index.html" class="nav__link">Главная</a></li>
+                <li class="nav__item"><a href="projects.html" class="nav__link">Проекты</a></li>
+                <li class="nav__item nav__item--active"><a href="diary.html" class="nav__link">Дневник</a></li>
+                <li class="nav__item"><a href="contacts.html" class="nav__link">Контакты</a></li>
+            </ul>
+        </nav>
+
+        <!-- Основной контент -->
+        <main class="main">
+            <div class="diary-section">
+                <!-- Заголовок -->
+                <h2 class="diary-section__title">Мой учебный прогресс</h2>
+                <p class="diary-section__subtitle">Хронологический список пройденных тем и выполненных заданий</p>
+
+                <!-- Список записей -->
+                <div class="diary-entries">
+                    <!-- Запись 1 -->
+                    <div class="diary-entry diary-entry--completed">
+                        <div class="diary-entry__date">15 дек</div>
+                        <div class="diary-entry__content">
+                            <h3 class="diary-entry__title">Верстка макета сайта</h3>
+                            <p class="diary-entry__description">Создание адаптивного макета с использованием HTML и CSS, работа с сетками</p>
+                        </div>
+                        <div class="diary-entry__status">
+                            <span class="status-icon">✓</span>
+                        </div>
+                    </div>
+
+                    <!-- Запись 2 -->
+                    <div class="diary-entry diary-entry--completed">
+                        <div class="diary-entry__date">10 дек</div>
+                        <div class="diary-entry__content">
+                            <h3 class="diary-entry__title">JavaScript основы</h3>
+                            <p class="diary-entry__description">Изучение переменных, функций, условий и циклов в JavaScript</p>
+                        </div>
+                        <div class="diary-entry__status">
+                            <span class="status-icon">✓</span>
+                        </div>
+                    </div>
+
+                    <!-- Запись 3 -->
+                    <div class="diary-entry diary-entry--in-progress">
+                        <div class="diary-entry__date">05 дек</div>
+                        <div class="diary-entry__content">
+                            <h3 class="diary-entry__title">Работа с формами</h3>
+                            <p class="diary-entry__description">Валидация форм, обработка событий, отправка данных</p>
+                        </div>
+                        <div class="diary-entry__status">
+                            <span class="status-icon">✗</span>
+                        </div>
+                    </div>
+
+                    <!-- Запись 4 -->
+                    <div class="diary-entry diary-entry--pending">
+                        <div class="diary-entry__date">01 дек</div>
+                        <div class="diary-entry__content">
+                            <h3 class="diary-entry__title">Адаптивный дизайн</h3>
+                            <p class="diary-entry__description">Медиа-запросы, mobile-first подход, flexbox и grid</p>
+                        </div>
+                        <div class="diary-entry__status">
+                            <span class="status-icon">✗</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Текущие курсы -->
+                <div class="courses-section">
+                    <h3 class="courses-section__title">Текущие курсы</h3>
+                    <p class="courses-section__subtitle">Прогресс изучения основных предметов</p>
+
+                    <div class="courses-list">
+                        <!-- Курс 1 -->
+                        <div class="course">
+                            <div class="course__header">
+                                <span class="course__name">Веб-разработка</span>
+                                <span class="course__percent">90%</span>
+                            </div>
+                            <div class="course__progress">
+                                <div class="course__bar" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Курс 2 -->
+                        <div class="course">
+                            <div class="course__header">
+                                <span class="course__name">JavaScript</span>
+                                <span class="course__percent">70%</span>
+                            </div>
+                            <div class="course__progress">
+                                <div class="course__bar" style="width: 70%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Курс 3 -->
+                        <div class="course">
+                            <div class="course__header">
+                                <span class="course__name">React</span>
+                                <span class="course__percent">50%</span>
+                            </div>
+                            <div class="course__progress">
+                                <div class="course__bar" style="width: 50%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Форма добавления записи -->
+                <div class="add-entry">
+                    <h3 class="add-entry__title">Добавить новую запись</h3>
+                    <form class="add-entry__form">
+                        <div class="form-group">
+                            <label for="date" class="form-label">Дата</label>
+                            <input type="date" id="date" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="title" class="form-label">Название темы</label>
+                            <input type="text" id="title" class="form-input" placeholder="Введите название темы" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description" class="form-label">Описание работы</label>
+                            <textarea id="description" class="form-textarea" rows="3" placeholder="Опишите выполненную работу" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Статус</label>
+                            <div class="form-radio-group">
+                                <label class="form-radio">
+                                    <input type="radio" name="status" value="completed" checked>
+                                    <span class="form-radio__text">Выполнено</span>
+                                </label>
+                                <label class="form-radio">
+                                    <input type="radio" name="status" value="in-progress">
+                                    <span class="form-radio__text">В процессе</span>
+                                </label>
+                                <label class="form-radio">
+                                    <input type="radio" name="status" value="pending">
+                                    <span class="form-radio__text">Не начато</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="form-button">Добавить запись</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- Подвал -->
+        <footer class="footer">
+            <p>© 2024 Контакты</p>
+        </footer>
+    </div>
+
+    <script>
+        // Обработка формы добавления записи
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.add-entry__form');
+            
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Получаем данные из формы
+                const date = document.getElementById('date').value;
+                const title = document.getElementById('title').value;
+                const description = document.getElementById('description').value;
+                const status = document.querySelector('input[name="status"]:checked').value;
+                
+                // Создаем новую запись
+                const newEntry = document.createElement('div');
+                let statusClass = '';
+                let statusIcon = '';
+                
+                // Определяем класс и иконку статуса
+                switch(status) {
+                    case 'completed':
+                        statusClass = 'diary-entry--completed';
+                        statusIcon = '✓';
+                        break;
+                    case 'in-progress':
+                        statusClass = 'diary-entry--in-progress';
+                        statusIcon = '↻';
+                        break;
+                    case 'pending':
+                        statusClass = 'diary-entry--pending';
+                        statusIcon = '✗';
+                        break;
+                }
+                
+                // Форматируем дату (преобразуем из YYYY-MM-DD в "дд мес")
+                const dateObj = new Date(date);
+                const formattedDate = dateObj.toLocaleDateString('ru-RU', {
+                    day: 'numeric',
+                    month: 'short'
+                });
+                
+                // Создаем HTML новой записи
+                newEntry.className = `diary-entry ${statusClass}`;
+                newEntry.innerHTML = `
+                    <div class="diary-entry__date">${formattedDate}</div>
+                    <div class="diary-entry__content">
+                        <h3 class="diary-entry__title">${title}</h3>
+                        <p class="diary-entry__description">${description}</p>
+                    </div>
+                    <div class="diary-entry__status">
+                        <span class="status-icon">${statusIcon}</span>
+                    </div>
+                `;
+                
+                // Добавляем новую запись в начало списка
+                const entriesContainer = document.querySelector('.diary-entries');
+                entriesContainer.prepend(newEntry);
+                
+                // Сбрасываем форму
+                form.reset();
+                
+                // Показываем сообщение об успехе
+                alert('Запись успешно добавлена!');
+            });
+        });
+    </script>
+</body>
+</html>

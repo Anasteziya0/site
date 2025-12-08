@@ -155,7 +155,9 @@ body {
     display: flex;
     gap: var(--space-md);
     flex-wrap: wrap;
+    flex-direction: column;
 }
+
 
 /* Блок skill с модификаторами */
 .skill {
@@ -164,6 +166,7 @@ body {
     color: var(--color-white);
     font-weight: bold;
     transition: transform 0.3s;
+    box-sizing: border-box;
 }
 
 .skill:hover {
@@ -171,53 +174,205 @@ body {
 }
 
 .skill--html {
-    background: #f7ef76;
-}
-
-.skill--css {
-    background: #8b83ff;
-}
-
-.skill--js {
-    background: #6fcef9;
     color: var(--color-text);
 }
 
+.skill--js {
+    color: var(--color-text);
+}
+
+.skill--bs {
+    color: var(--color-text);
+}
+.skill--react {
+    color: var(--color-text);
+}
+
+.skill__progress {
+    width: 600px;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 5px;
+
+}
+
+.skill_bar {
+    height: 100%;
+    background-color: #ffffff; /* или другой цвет */
+    border-radius: 4px;
+    transition: width 0.5s ease-in-out;
+}
+
 /* Блок projects */
-.projects__title {
-    color: var(--color-main);
-    margin-bottom: var(--space-md);
-    font-size: 1.5rem;
-}
+/* =========== СТИЛИ ДЛЯ "ЛУЧШИХ ПРОЕКТОВ" =========== */
 
-.projects__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-md);
-}
-
-/* Блок project-card */
-.project-card {
-    background: var(--color-white);
+.projects-best {
     padding: var(--space-lg);
+    background: var(--color-light);
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    border-left: 4px solid var(--color-accent);
-    transition: transform 0.3s;
+    margin: var(--space-lg) 0;
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-}
-
-.project-card__title {
+.projects-best__title {
     color: var(--color-main);
+    font-size: 1.8rem;
+    margin-bottom: var(--space-sm);
+    text-align: center;
+}
+
+.projects-best__subtitle {
+    color: var(--color-text);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    opacity: 0.8;
+}
+
+.projects-best__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Карточка лучшего проекта */
+.project-best {
+    display: flex;
+    align-items: flex-start;
+    background: var(--color-white);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.project-best:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border-color: var(--color-accent);
+}
+
+/* Номер проекта */
+.project-best__number {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--color-main), var(--color-accent));
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: var(--space-md);
+    flex-shrink: 0;
+}
+
+/* Контент проекта */
+.project-best__content {
+    flex: 1;
+}
+
+.project-best__name {
+    color: var(--color-dark);
+    font-size: 1.3rem;
     margin-bottom: var(--space-sm);
 }
 
-.project-card__desc {
-    color: #666;
+.project-best__description {
+    color: var(--color-text);
+    line-height: 1.5;
+    margin-bottom: var(--space-md);
+    font-size: 0.95rem;
 }
+
+/* Теги проекта */
+.project-best__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+/* Стили для тегов (если еще нет) */
+.tag {
+    padding: 4px 12px;
+    background: var(--color-light);
+    color: var(--color-text);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    background: var(--color-accent);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+/* Ссылка проекта */
+.project-best__link {
+    display: inline-block;
+    color: var(--color-main);
+    text-decoration: none;
+    font-weight: 500;
+    padding: var(--space-sm) 0;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.project-best__link:hover {
+    color: var(--color-dark);
+    border-bottom-color: var(--color-accent);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .project-best {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .project-best__number {
+        margin-right: 0;
+        margin-bottom: var(--space-md);
+        align-self: center;
+    }
+    
+    .project-best__tags {
+        justify-content: center;
+    }
+    
+    .projects-best__title {
+        font-size: 1.5rem;
+    }
+    
+    .projects-best {
+        padding: var(--space-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .project-best {
+        padding: var(--space-sm);
+    }
+    
+    .project-best__number {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .project-best__name {
+        font-size: 1.2rem;
+    }
+}
+
+/* Блок projects-page (контейнер для страницы проектов) */
 
 /* Блок footer */
 .footer {
@@ -342,4 +497,763 @@ body {
     display: flex;
     justify-self: center;
 
+}
+
+/* =========== СТРАНИЦА ПРОЕКТОВ =========== */
+
+/* =========== СТИЛИ ДЛЯ СТРАНИЦЫ ПРОЕКТОВ =========== */
+
+.projects-section {
+    padding: var(--space-lg);
+}
+
+.projects-section__title {
+    color: var(--color-main);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: var(--space-sm);
+}
+
+.projects-section__subtitle {
+    color: var(--color-text);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    opacity: 0.8;
+}
+
+/* Фильтры */
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+    padding: var(--space-md);
+    background: var(--color-light);
+    border-radius: var(--radius);
+}
+
+.filter {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-white);
+    border: 2px solid var(--color-accent);
+    border-radius: 30px;
+    color: var(--color-text);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.filter:hover {
+    background: var(--color-accent);
+    color: var(--color-white);
+}
+
+.filter.active {
+    background: var(--color-main);
+    color: var(--color-white);
+    border-color: var(--color-main);
+}
+
+/* Сетка проектов */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-lg);
+}
+
+/* Карточка проекта */
+.project {
+    background: var(--color-white);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-light);
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border-color: var(--color-accent);
+}
+
+/* Заголовок проекта с иконкой */
+.project__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.project__icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-main), var(--color-accent));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-size: 1.5rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.project__title {
+    color: var(--color-dark);
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+/* Описание проекта */
+.project__description {
+    color: var(--color-text);
+    line-height: 1.5;
+    margin-bottom: var(--space-md);
+    font-size: 0.95rem;
+}
+
+/* Теги технологий */
+.project__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.tag {
+    padding: 4px 12px;
+    background: var(--color-light);
+    color: var(--color-text);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Ссылки проекта */
+.project__links {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.link {
+    flex: 1;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.link--demo {
+    background: var(--color-main);
+    color: var(--color-white);
+}
+
+.link--demo:hover {
+    background: var(--color-dark);
+    transform: translateY(-2px);
+}
+
+.link--code {
+    background: var(--color-light);
+    color: var(--color-text);
+}
+
+.link--code:hover {
+    background: var(--color-accent);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+    
+    .filters {
+        gap: 8px;
+    }
+    
+    .filter {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .project__header {
+        gap: var(--space-sm);
+    }
+    
+    .project__icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-section__title {
+        font-size: 1.5rem;
+    }
+    
+    .project__links {
+        flex-direction: column;
+    }
+    
+    .link {
+        width: 100%;
+    }
+}
+
+/* =========== СТИЛИ ДЛЯ ДНЕВНИКА =========== */
+
+.diary-section {
+    padding: var(--space-lg);
+}
+
+.diary-section__title {
+    color: var(--color-main);
+    font-size: 1.8rem;
+    margin-bottom: var(--space-sm);
+    text-align: center;
+}
+
+.diary-section__subtitle {
+    color: var(--color-text);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    opacity: 0.8;
+}
+
+/* Список записей дневника */
+.diary-entries {
+    margin-bottom: var(--space-lg);
+    background: var(--color-white);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    box-shadow: var(--shadow);
+}
+
+/* Запись дневника */
+.diary-entry {
+    display: flex;
+    align-items: flex-start;
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--color-light);
+    transition: all 0.3s ease;
+}
+
+.diary-entry:last-child {
+    border-bottom: none;
+}
+
+.diary-entry:hover {
+    background: var(--color-light);
+    border-radius: var(--radius);
+}
+
+/* Статусы записей */
+.diary-entry--completed {
+    border-left: 4px solid #4CAF50;
+}
+
+.diary-entry--in-progress {
+    border-left: 4px solid #FF9800;
+}
+
+.diary-entry--pending {
+    border-left: 4px solid #F44336;
+}
+
+/* Дата записи */
+.diary-entry__date {
+    min-width: 80px;
+    font-weight: bold;
+    color: var(--color-main);
+    font-size: 1.1rem;
+}
+
+/* Контент записи */
+.diary-entry__content {
+    flex: 1;
+    margin: 0 var(--space-md);
+}
+
+.diary-entry__title {
+    color: var(--color-dark);
+    margin-bottom: var(--space-sm);
+    font-size: 1.2rem;
+}
+
+.diary-entry__description {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+/* Статус записи */
+.diary-entry__status {
+    min-width: 40px;
+    text-align: center;
+}
+
+.status-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.diary-entry--completed .status-icon {
+    background: #4CAF50;
+    color: white;
+}
+
+.diary-entry--in-progress .status-icon {
+    background: #FF9800;
+    color: white;
+}
+
+.diary-entry--pending .status-icon {
+    background: #F44336;
+    color: white;
+}
+
+/* Секция курсов */
+.courses-section {
+    background: var(--color-white);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow);
+}
+
+.courses-section__title {
+    color: var(--color-main);
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+}
+
+.courses-section__subtitle {
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
+    opacity: 0.8;
+}
+
+/* Список курсов */
+.courses-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+/* Курс */
+.course {
+    margin-bottom: var(--space-md);
+}
+
+.course__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-sm);
+}
+
+.course__name {
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.course__percent {
+    color: var(--color-main);
+    font-weight: bold;
+}
+
+/* Прогресс-бар курса */
+.course__progress {
+    width: 100%;
+    height: 10px;
+    background: var(--color-light);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.course__bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-main), var(--color-accent));
+    border-radius: 5px;
+    transition: width 1s ease;
+}
+
+/* Форма добавления записи */
+.add-entry {
+    background: var(--color-white);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow);
+}
+
+.add-entry__title {
+    color: var(--color-main);
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+    text-align: center;
+}
+
+/* Стили формы */
+.add-entry__form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: var(--space-md);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--space-sm);
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    border: 2px solid var(--color-light);
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Радио-кнопки */
+.form-radio-group {
+    display: flex;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+.form-radio {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.form-radio input {
+    margin-right: var(--space-sm);
+}
+
+.form-radio__text {
+    color: var(--color-text);
+}
+
+/* Кнопка отправки */
+.form-button {
+    width: 100%;
+    padding: var(--space-md);
+    background: var(--color-main);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-button:hover {
+    background: var(--color-dark);
+    transform: translateY(-2px);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .diary-entry {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+    
+    .diary-entry__date {
+        min-width: auto;
+    }
+    
+    .diary-entry__content {
+        margin: 0;
+    }
+    
+    .form-radio-group {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+    
+    .course__header {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .diary-section__title {
+        font-size: 1.5rem;
+    }
+    
+    .add-entry {
+        padding: var(--space-md);
+    }
+}
+
+/* =========== СТИЛИ ДЛЯ СТРАНИЦЫ КОНТАКТОВ =========== */
+
+.contacts-section {
+    padding: var(--space-lg);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contacts-section__title {
+    color: var(--color-main);
+    font-size: 1.8rem;
+    margin-bottom: var(--space-sm);
+    text-align: center;
+}
+
+.contacts-section__subtitle {
+    color: var(--color-text);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    opacity: 0.8;
+}
+
+/* Основной контент */
+.contacts-content {
+    /* display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    max-width: 1200px;
+    margin: 0 auto; */
+}
+
+/* Форма контактов */
+.contact-form {
+    background: var(--color-white);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow);
+     margin-bottom: var(--space-lg);
+}
+
+.contact-form__form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact-form__button {
+    width: 100%;
+    padding: var(--space-md);
+    background: var(--color-main);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: var(--space-md);
+}
+
+.contact-form__button:hover {
+    background: var(--color-dark);
+    transform: translateY(-2px);
+}
+
+/* Общие стили для формы */
+.form-group {
+    margin-bottom: var(--space-md);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--space-sm);
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    border: 2px solid var(--color-light);
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Информация о контактах */
+.contact-info {
+    background: var(--color-white);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow);
+}
+
+.contact-info__title {
+    color: var(--color-main);
+    font-size: 1.5rem;
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+/* Список контактов */
+.contact-items {
+    margin-bottom: var(--space-lg);
+
+}
+
+/* Элемент контакта */
+.contact-item {
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    background: var(--color-light);
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--color-accent);
+}
+
+.contact-item:hover {
+    transform: translateX(5px);
+    background: var(--color-accent);
+    border-left-color: var(--color-main);
+}
+
+.contact-item__header {
+    margin-bottom: var(--space-sm);
+}
+
+.contact-item__type {
+    color: var(--color-dark);
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact-item__value {
+    color: var(--color-text);
+    text-decoration: none;
+    display: block;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.contact-item__value:hover {
+    color: var(--color-main);
+    text-decoration: underline;
+}
+
+/* Карта */
+.contact-map {
+    margin-top: var(--space-lg);
+}
+
+.map-placeholder {
+    background: var(--color-light);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
+    text-align: center;
+    color: var(--color-text);
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--color-accent);
+}
+
+.map-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--color-dark);
+    margin-bottom: var(--space-sm);
+}
+
+.map-coordinates {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    font-family: monospace;
+}
+
+/* Адаптивность */
+@media (max-width: 900px) {
+    .contacts-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-form,
+    .contact-info {
+        padding: var(--space-md);
+    }
+    
+    .contact-item {
+        padding: var(--space-sm) var(--space-md);
+    }
+    
+    .contacts-section__title {
+        font-size: 1.5rem;
+    }
+    
+    .contact-info__title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contacts-section {
+        padding: var(--space-md);
+    }
+    
+    .contact-form__button {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 1rem;
+    }
+    
+    .map-title {
+        font-size: 1rem;
+    }
 }

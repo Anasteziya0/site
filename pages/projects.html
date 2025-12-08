@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои проекты</title>
+    <link rel="stylesheet" href="../style/styles.css">
+</head>
+<body>
+    <div class="page">
+        <!-- Шапка -->
+        <header class="header">
+            <h1 class="header__title">Анастасия</h1>
+        </header>
+        <!-- Навигация -->
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="../index.html" class="nav__link">Главная</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a href="projects.html" class="nav__link">Проекты</a>
+                </li>
+                <li class="nav__item">
+                    <a href="diary.html" class="nav__link">Учебный дневник</a>
+                </li>
+                <li class="nav__item">
+                    <a href="contacts.html" class="nav__link">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Основной контент -->
+        <main class="main">
+            <!-- Заголовок -->
+            <div class="projects-section">
+                <h2 class="projects-section__title">Мои проекты</h2>
+                <p class="projects-section__subtitle">Полная коллекция учебных и личных работ</p>
+                
+                <!-- Фильтры -->
+                <div class="filters">
+                    <button class="filter active" data-filter="all">Все</button>
+                    <button class="filter" data-filter="html">HTML/CSS</button>
+                    <button class="filter" data-filter="js">JavaScript</button>
+                    <button class="filter" data-filter="react">React</button>
+                    <button class="filter" data-filter="bootstrap">Bootstrap</button>
+                </div>
+                
+                <!-- Сетка проектов -->
+                <div class="projects-grid">
+                    <!-- Проект 1 -->
+                    <div class="project" data-category="html">
+                        <div class="project__header">
+                            <div class="project__icon">ЛС</div>
+                            <h3 class="project__title">Личный сайт</h3>
+                        </div>
+                        <p class="project__description">Персональный сайт-визитка с адаптивным дизайном и современной версткой.</p>
+                        <div class="project__tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                        </div>
+                        <div class="project__links">
+                            <a href="#" class="link link--demo">Демо</a>
+                            <a href="#" class="link link--code">Код</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Проект 2 -->
+                    <div class="project" data-category="js">
+                        <div class="project__header">
+                            <div class="project__icon">ТД</div>
+                            <h3 class="project__title">Todo-приложение</h3>
+                        </div>
+                        <p class="project__description">Интерактивное приложение для управления задачами с локальным хранением данных.</p>
+                        <div class="project__tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">LocalStorage</span>
+                        </div>
+                        <div class="project__links">
+                            <a href="#" class="link link--demo">Демо</a>
+                            <a href="#" class="link link--code">Код</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Проект 3 -->
+                    <div class="project" data-category="react">
+                        <div class="project__header">
+                            <div class="project__icon">ИМ</div>
+                            <h3 class="project__title">Интернет-магазин</h3>
+                        </div>
+                        <p class="project__description">Полнофункциональный интернет-магазин с корзиной товаров и оформлением заказов.</p>
+                        <div class="project__tags">
+                            <span class="tag">React</span>
+                            <span class="tag">API</span>
+                            <span class="tag">State</span>
+                        </div>
+                        <div class="project__links">
+                            <a href="#" class="link link--demo">Демо</a>
+                            <a href="#" class="link link--code">Код</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Проект 4 -->
+                    <div class="project" data-category="bootstrap">
+                        <div class="project__header">
+                            <div class="project__icon">ПФ</div>
+                            <h3 class="project__title">Портфолио</h3>
+                        </div>
+                        <p class="project__description">Адаптивное портфолио с использованием фреймворка Bootstrap 5.</p>
+                        <div class="project__tags">
+                            <span class="tag">Bootstrap</span>
+                            <span class="tag">Responsive</span>
+                            <span class="tag">Grid</span>
+                        </div>
+                        <div class="project__links">
+                            <a href="#" class="link link--demo">Демо</a>
+                            <a href="#" class="link link--code">Код</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Подвал -->
+        <footer class="footer">
+            <p>© 2024 Контакты</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Фильтрация проектов
+            const filters = document.querySelectorAll('.filter');
+            const projects = document.querySelectorAll('.project');
+            
+            filters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    // Убираем активный класс у всех фильтров
+                    filters.forEach(f => f.classList.remove('active'));
+                    // Добавляем активный класс текущему фильтру
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Показываем/скрываем проекты
+                    projects.forEach(project => {
+                        const category = project.getAttribute('data-category');
+                        
+                        if (filterValue === 'all' || category === filterValue) {
+                            project.style.display = 'block';
+                            // Анимация появления
+                            project.style.opacity = '0';
+                            project.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                project.style.transition = 'opacity 0.3s, transform 0.3s';
+                                project.style.opacity = '1';
+                                project.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            // Анимация исчезновения
+                            project.style.opacity = '0';
+                            project.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                project.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Анимация появления проектов при загрузке
+            projects.forEach((project, index) => {
+                setTimeout(() => {
+                    project.style.opacity = '0';
+                    project.style.transform = 'translateY(20px)';
+                    project.style.transition = 'opacity 0.5s, transform 0.5s';
+                    
+                    setTimeout(() => {
+                        project.style.opacity = '1';
+                        project.style.transform = 'translateY(0)';
+                    }, 10);
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
